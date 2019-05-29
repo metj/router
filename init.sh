@@ -17,8 +17,8 @@ done < domains.txt
 
 echo "/opt/etc/init.d/S09dnscrypt-proxy start" >> /jffs/scripts/services-start
 
-#cp firewall-start /jffs/scripts/ -f
-#chmod +x /jffs/scripts/firewall-start
+cp firewall-start /jffs/scripts/ -f
+chmod +x /jffs/scripts/firewall-start
 
 cp wan-start /jffs/scripts/ -f
 chmod +x /jffs/scripts/wan-start
