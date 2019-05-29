@@ -1,0 +1,3 @@
+#!/bin/sh
+
+iptables -A PREROUTING -t mangle -m set --set unblock dst,src -j MARK --set-mark 99

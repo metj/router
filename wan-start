@@ -5,8 +5,6 @@ modprobe ip_set
 
 ipset -N unblock iphash
 ip rule add fwmark 99 table 99
-iptables -A PREROUTING -t mangle -m set --set unblock dst,src -j MARK --set-mark 99
-
 
 i=0
 while [ $i -le 15 ]
