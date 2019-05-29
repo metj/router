@@ -1,5 +1,6 @@
 #!/bin/sh
 
 TUN=$(ifconfig | grep tun | { read first _ ; echo $first ; })
+echo 0 > /proc/sys/net/ipv4/conf/$TUN/rp_filter
 ip route add default dev $TUN table 99
 
