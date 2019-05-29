@@ -1,0 +1,5 @@
+#!/bin/sh
+
+TUN=$(ifconfig | grep tun | { read first _ ; echo $first ; })
+ip route add default dev $TUN table 99
+
