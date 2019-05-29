@@ -4,7 +4,6 @@
 modprobe ip_set
 
 ipset -N unblock iphash
-ip rule add fwmark 99 table 99
 
 i=0
 while [ $i -le 15 ]
