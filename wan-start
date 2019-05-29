@@ -3,6 +3,10 @@
 # Wait up to 15 seconds to make sure /opt partition is mounted
 modprobe ip_set
 
+ip rule add fwmark 99 table 99
+iptables -A PREROUTING -t mangle -m set --set name dst,src -j MARK --set-mark 99
+ipset -N unblock iphash
+
 i=0
 while [ $i -le 15 ]
 do
