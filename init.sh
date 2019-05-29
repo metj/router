@@ -5,9 +5,15 @@ opkg install dnscrypt-proxy fake-hwclock
 echo "no-resolv" > /jffs/configs/dnsmasq.conf.add
 echo "server=127.0.0.1#65053" >> /jffs/configs/dnsmasq.conf.add
 
-domains=$(cat domains.txt | tr '\n' '\')
-unblock="unblock"
-echo "ipset=$domains$unblock" >> /jffs/configs/dnsmasq.conf.add
+#domains=$(cat domains.txt | tr '\n' '\')
+#unblock="unblock"
+#echo "ipset=$domains$unblock" >> /jffs/configs/dnsmasq.conf.add
+
+while read line || [ -n "$line" ]; do
+echo "ipset=/$line/unblock" >> /jffs/configs/dnsmasq.conf.add
+done < domains.txt
+
+
 
 echo "/opt/etc/init.d/S09dnscrypt-proxy start" >> /jffs/scripts/services-start
 
