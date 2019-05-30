@@ -9,9 +9,9 @@ echo "server=127.0.0.1#65053" >> /jffs/configs/dnsmasq.conf.add
 #unblock="unblock"
 #echo "ipset=$domains$unblock" >> /jffs/configs/dnsmasq.conf.add
 
-while read line || [ -n "$line" ]; do
-echo "ipset=/$line/unblock" >> /jffs/configs/dnsmasq.conf.add
-done < domains.txt
+#while read line || [ -n "$line" ]; do
+#echo "ipset=/$line/unblock" >> /jffs/configs/dnsmasq.conf.add
+#done < domains.txt
 
 
 
@@ -19,6 +19,8 @@ echo "/opt/etc/init.d/S09dnscrypt-proxy start" >> /jffs/scripts/services-start
 
 cp firewall-start /jffs/scripts/ -f
 chmod +x /jffs/scripts/firewall-start
+
+cp domains.txt /jffs/scripts/ -f
 
 cp wan-start /jffs/scripts/ -f
 chmod +x /jffs/scripts/wan-start
