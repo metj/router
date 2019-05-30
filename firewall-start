@@ -2,13 +2,13 @@
 
 modprobe ip_set
 
+ip rule add fwmark 99 table 99
 ipset -N unblock iphash
+iptables -A PREROUTING -t mangle -m set --set unblock dst,src -j MARK --set-mark 99
 
 while read domain || [ -n "$domain" ]; do
     nslookup $domain | grep -E -o "([0-9]{1,3}[\.]){3}[0-9]{1,3}" | grep -v '127.0.0.1' | while read -r ipdomain ; do
         ipset -A unblock $ipdomain
     done
-done < domains.txt
+done < /jffs/configs/domains.txt
 
-ip rule add fwmark 99 table 99
-iptables -A PREROUTING -t mangle -m set --set unblock dst,src -j MARK --set-mark 99
