@@ -20,6 +20,9 @@ echo "/opt/etc/init.d/S09dnscrypt-proxy start" >> /jffs/scripts/services-start
 cp firewall-start /jffs/scripts/ -f
 chmod +x /jffs/scripts/firewall-start
 
+cp updateblocklist.sh /jffs/scripts/ -f
+chmod +x /jffs/scripts/updateblocklist.sh
+
 cp domains.txt /jffs/configs/ -f
 
 cp wan-start /jffs/scripts/ -f
